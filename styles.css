@@ -426,66 +426,78 @@ html {
 }
 
 /* ======================================================== */
-/*  ARREGLO ULTRA-ESTRICTO: LOGO CUADRADO Y CHIQUITO        */
+/*  CONFIGURACIÓN FINAL COMPLETA: LOGO Y FOTOS PERFECTAS     */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. FORZAMOS AL ENCABEZADO A PONER EL LOGO Y EL TEXTO EN FILA HORIZONTAL */
+    /* 1. EL LOGO SE QUEDA CHIQUITO Y AL LADO DEL TEXTO */
     header, .header, #header, div[class*="header"] {
         display: flex !important;
-        flex-direction: row !important; /* Pone el logo al lado del texto */
-        flex-wrap: wrap !important;     /* Permite que el menú baje al renglón de abajo */
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
         align-items: center !important;
         justify-content: flex-start !important;
         padding: 10px !important;
-        background-color: #5d534a !important; /* Tu color marroncito */
+        background-color: #5d534a !important; /* Tu marroncito */
         height: auto !important;
         position: relative !important;
     }
 
-    /* 2. OBLIGAMOS A CUALQUIER IMAGEN DEL LOGO A SER UN CUADRADITO DE 45PX */
-    header img, .logo img, #logo, [class*="logo"] img, div[class*="logo"] img {
+    header img, .logo img, #logo, [class*="logo"] img {
         width: 45px !important;
         height: 45px !important;
-        max-width: 45px !important;
-        max-height: 45px !important;
         object-fit: contain !important;
         margin: 0 !important;
-        display: inline-block !important;
     }
 
-    /* 3. EL TEXTO "PIEDRA Y FORJA" UN POCO MÁS GRANDE AL LADO DEL LOGO */
-    header h1, header h2, header p, .logo-text, header span, [class*="titulo"] {
-        font-size: 18px !important; /* Más grande que las letras de inicio */
+    header h1, header h2, .logo-text, [class*="titulo"] {
+        font-size: 18px !important;
         color: #ffffff !important;
-        margin: 0 0 0 12px !important; /* Separación del cuadradito del logo */
-        display: inline-block !important;
+        margin: 0 0 0 12px !important;
         font-weight: bold !important;
     }
 
-    /* 4. EL MENÚ DE BOTONES (INICIO, MUEBLES...) ACOMODADO ABAJO */
+    /* 2. EL MENÚ DE BOTONES ORIGINAL EN COLOR OSCURO (PARA QUE SE VEA) */
     header nav, header ul, .menu, [class*="nav"] {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        width: 100% !important; /* Se estira abajo del todo */
+        width: 100% !important;
         gap: 12px !important;
         list-style: none !important;
         padding: 0 !important;
         margin: 12px 0 4px 0 !important;
     }
 
-    header nav a, header ul a, header li a, [class*="nav"] a {
-        font-size: 13px !important; /* Tamaño normal prolijo */
-        color: #000 !important;
+    header nav a, header ul a, [class*="nav"] a {
+        font-size: 13px !important;
+        color: #5d534a !important; /* Color marrón oscuro para que se lea sobre fondo blanco */
         text-decoration: none !important;
+        font-weight: bold !important;
     }
 
-    /* 5. TODO SE MUEVE DE FORMA NORMAL CON EL DEDO (NADA TE PERSIGUE) */
+    /* 3. TODO SE MUEVE NORMAL CON EL DEDO */
     header, nav, .categorias, .botones-contenedor, div[class*="categoria"] {
         position: static !important;
         position: relative !important;
     }
     body { padding-top: 0 !important; }
+
+    /* 4. SE RESTAURAN LAS 2 COLUMNAS RECTANGULARES LINDAS PARA LAS FOTOS */
+    body div[class*="grid"], body div[class*="galeria"], .productos-grid, .galeria-grid, .grid { 
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Fuerza las 2 columnas */
+        gap: 12px !important;
+        padding: 8px !important;
+    }
+
+    /* Esto hace que las fotos de vestidores vuelvan a ser rectángulos prolijos */
+    body div img, body .grid img, body .galeria-grid img, body div[class*="grid"] img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4 !important; /* Rectángulo alto de catálogo */
+        object-fit: cover !important;
+        border-radius: 8px !important;
+    }
 }
