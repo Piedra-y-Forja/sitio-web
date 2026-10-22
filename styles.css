@@ -425,7 +425,7 @@ html {
     border-radius: 4px;
 }
 
-/* Esto se aplica solo a pantallas chicas como celulares */
+/* Esto arregla el menú y hace las fotos rectangulares en el celular */
 @media (max-width: 768px) {
     header {
         flex-direction: column; /* Pone el logo arriba y el menú abajo */
@@ -435,14 +435,27 @@ html {
 
     nav {
         display: flex;
-        flex-wrap: wrap; /* Si no entran los botones, los pasa abajo */
+        flex-wrap: wrap; /* Evita que los botones se encimen */
         justify-content: center;
         gap: 10px;
         margin-top: 10px;
     }
 
     nav a {
-        font-size: 14px; /* Achica un poquito la letra para que entre bien */
+        font-size: 14px;
         padding: 5px 8px;
+    }
+
+    /* AQUÍ EL ARREGLO DE LAS FOTOS: Pasa de 4 columnas a 2 columnas bien estilizadas */
+    .productos-grid, .galeria-grid, .grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px !important;
+        padding: 10px;
+    }
+
+    .grid img, .galeria-grid img, card img {
+        aspect-ratio: 2 / 3 !important; /* Fuerza a la foto a ser un rectángulo alto */
+        object-fit: cover; /* Evita que la foto se deforme o estire feo */
+        border-radius: 8px;
     }
 }
