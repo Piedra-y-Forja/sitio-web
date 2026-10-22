@@ -131,7 +131,7 @@ html {
     padding: 10px;
     width: 90%;
     max-width: 1200px;
-    background-color: #ffffff;
+    background-color: #5d534a;
     border-radius: 20px;
     position: -webkit-sticky;
     position: sticky;
@@ -481,7 +481,7 @@ html {
 
     /* Forzamos a que las letras 'Cocinas', 'Vestidores', etc., sean marrón oscuro y legibles */
     .dropdown-content a, .dropdown-trigger, .nav-menu a {
-        color: #5d534a !important; /* COLOR MARRÓN OSCURO PARA QUE SE VEA */
+        color: #ffff !important; /* COLOR MARRÓN OSCURO PARA QUE SE VEA */
         font-size: 14px !important;
         padding: 8px 12px !important;
         text-decoration: none !important;
