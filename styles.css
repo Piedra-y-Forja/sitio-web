@@ -426,11 +426,11 @@ html {
 }
 
 /* ======================================================== */
-/*  CONFIGURACIÓN FINAL COMPLETAMENTE CORREGIDA             */
+/*  CONFIGURACIÓN FINAL GARANTIZADA PARA CELULARES          */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. EL LOGO EN FILA HORIZONTAL PERFECTO */
+    /* 1. MANTENEMOS EL LOGO EN FILA HORIZONTAL PERFECTO */
     header {
         display: flex !important;
         flex-direction: row !important;
@@ -438,7 +438,7 @@ html {
         align-items: center !important;
         justify-content: flex-start !important;
         padding: 10px !important;
-        background-color: #5d534a !important;
+        background-color: #5d534a !important; /* Tu color marroncito */
         height: auto !important;
         position: relative !important;
     }
@@ -456,37 +456,40 @@ html {
         font-weight: bold !important;
     }
 
-    /* 2. EL MENÚ DE BOTONES (INICIO, CATÁLOGO...) VISIBLE Y CON FONDO GRIS */
-    header nav, header ul {
+    /* 2. ACOMODAMOS EL MENÚ DE NAVEGACIÓN PRINCIPAL */
+    header nav, .nav-menu {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
         width: 100% !important;
-        gap: 8px !important;
+        gap: 10px !important;
         list-style: none !important;
         padding: 0 !important;
         margin: 12px 0 4px 0 !important;
     }
 
-    /* Modificamos los botones para que tengan texto blanco y un fondo gris lindo */
-    header nav a, header ul a, header li a {
-        font-size: 12px !important;
-        color: #ffffff !important; /* TEXTO BLANCO PARA QUE RESALTE */
-        background-color: rgba(255, 255, 255, 0.15) !important; /* Fondo grisáceo suave */
-        padding: 6px 10px !important;
-        border-radius: 4px !important;
+    /* 3. ARREGLO FINAL DE LAS LETRAS: MARRÓN OSCURO PARA LAS CATEGORÍAS */
+    /* Apuntamos con nombre y apellido a tu menú desplegable de la foto */
+    .dropdown-content, .dropdown-content div {
+        background-color: #ffffff !important; /* Fondo blanco para las categorías */
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        position: static !important;
+    }
+
+    /* Forzamos a que las letras 'Cocinas', 'Vestidores', etc., sean marrón oscuro y legibles */
+    .dropdown-content a, .dropdown-trigger, .nav-menu a {
+        color: #5d534a !important; /* COLOR MARRÓN OSCURO PARA QUE SE VEA */
+        font-size: 14px !important;
+        padding: 8px 12px !important;
         text-decoration: none !important;
         font-weight: bold !important;
+        display: block !important;
     }
 
-    /* 3. TODO SE MUEVE NORMAL CON EL DEDO */
-    header, nav, .categorias {
-        position: static !important;
-        position: relative !important;
-    }
-
-    /* 4. LAS IMÁGENES QUEDAN EXACTAMENTE IGUAL (NO SE TOCAN) */
+    /* 4. LAS IMÁGENES NO SE TOCAN (SE QUEDAN EN 2 COLUMNAS PERFECTAS) */
     .productos-grid { 
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
