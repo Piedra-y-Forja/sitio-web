@@ -424,3 +424,25 @@ html {
     object-fit: cover;
     border-radius: 4px;
 }
+
+/* Esto se aplica solo a pantallas chicas como celulares */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Pone el logo arriba y el menú abajo */
+        text-align: center;
+        padding: 10px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap; /* Si no entran los botones, los pasa abajo */
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav a {
+        font-size: 14px; /* Achica un poquito la letra para que entre bien */
+        padding: 5px 8px;
+    }
+}
