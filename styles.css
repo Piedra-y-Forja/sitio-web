@@ -425,37 +425,37 @@ html {
     border-radius: 4px;
 }
 
-/* Esto arregla el menú y hace las fotos rectangulares en el celular */
+/* ======================================================== */
+/*  ESTO ARREGLA EL CELULAR SIN TOCAR NADA DE LA COMPUTADORA */
+/* ======================================================== */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Pone el logo arriba y el menú abajo */
-        text-align: center;
-        padding: 10px;
+    
+    /* 1. OCULTAMOS EL MENÚ DE ARRIBA EN EL CELULAR PARA QUE NO QUEDE FEO */
+    header, nav {
+        display: none !important;
     }
 
-    nav {
-        display: flex;
-        flex-wrap: wrap; /* Evita que los botones se encimen */
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
+    /* 2. PASAMOS LAS FOTOS A 2 COLUMNAS PARA QUE TENGAN ESPACIO */
+    /* Nota: Usamos 'body *' para buscar cualquier contenedor de tus fotos automáticamente */
+    body .productos-grid, 
+    body .galeria-grid, 
+    body .grid, 
+    body div[class*="grid"], 
+    body div[class*="galeria"] { 
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Fuerza 2 columnas */
+        gap: 12px !important;
+        padding: 8px !important;
     }
 
-    nav a {
-        font-size: 14px;
-        padding: 5px 8px;
-    }
-
-    /* AQUÍ EL ARREGLO DE LAS FOTOS: Pasa de 4 columnas a 2 columnas bien estilizadas */
-    .productos-grid, .galeria-grid, .grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 15px !important;
-        padding: 10px;
-    }
-
-    .grid img, .galeria-grid img, card img {
-        aspect-ratio: 2 / 3 !important; /* Fuerza a la foto a ser un rectángulo alto */
-        object-fit: cover; /* Evita que la foto se deforme o estire feo */
-        border-radius: 8px;
+    /* 3. HACEMOS QUE LAS FOTOS SEAN RECTÁNGULOS PERFECTOS Y LINDOS */
+    body div img, 
+    body .grid img, 
+    body .galeria-grid img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4 !important; /* Proporción rectangular perfecta de catálogo */
+        object-fit: cover !important;  /* Recorta la imagen prolijamente para que no se estire */
+        border-radius: 8px !important;
     }
 }
