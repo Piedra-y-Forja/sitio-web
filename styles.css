@@ -426,35 +426,40 @@ html {
 }
 
 /* ======================================================== */
-/*  ARREGLO DEFINITIVO PARA CELULAR (SIN VUELTAS)           */
+/*  RESTAURACIÓN DEL MENÚ ORIGINAL PARA CELULARES           */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. SE QUITA TODO LO FIJO: TODO SUBE Y BAJA CON EL DEDO */
-    header, nav, .categorias, .botones-contenedor, div[class*="categoria"], .logo, [class*="logo"] {
+    /* 1. SE DEVUELVE EL MENÚ DE BOTONES ORIGINAL (INICIO, MUEBLES, ETC) */
+    header nav, header ul {
+        display: flex !important; /* Fuerza a que vuelvan a aparecer */
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 10px 0 0 0 !important;
+    }
+
+    /* 2. TODO SE MUEVE NORMAL CON EL DEDO (NADA QUEDA FIJO NI TAPA LAS FOTOS) */
+    header, nav, .categorias, .botones-contenedor, div[class*="categoria"] {
         position: static !important;
         position: relative !important;
-    }
-
-    /* 2. FORZAMOS AL LOGO GIGANTE A ACHICARSE SÍ O SÍ */
-    header img, .logo img, [class*="logo"] img {
-        max-width: 140px !important; /* Le da un tamaño chiquito y normal de celular */
-        width: 140px !important;
         height: auto !important;
-        display: block !important;
-        margin: 0 auto !important; /* Lo centra prolijamente */
     }
 
-    /* Ajustamos el fondo del encabezado para que no ocupe toda la pantalla */
     header {
-        height: auto !important;
-        padding: 15px 0 !important;
-        background-color: #5d534a !important; /* Mantiene tu color marroncito */
+        display: flex !important;
+        flex-direction: column !important; /* Pone el logo arriba y los botones abajo */
+        align-items: center !important;
+        padding: 15px !important;
+        background-color: #5d534a !important; /* Mantiene tu fondo marroncito original */
     }
 
-    /* Ocultamos el menú de letras chiquitas que se amontona abajo del logo */
-    header nav, header ul {
-        display: none !important;
+    /* Ajuste para que el logo se acomode bien con sus botones */
+    header img {
+        max-width: 150px !important; 
+        height: auto !important;
     }
 
     body {
