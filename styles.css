@@ -426,36 +426,65 @@ html {
 }
 
 /* ======================================================== */
-/*  ESTO ARREGLA EL CELULAR SIN TOCAR NADA DE LA COMPUTADORA */
+/*  CONFIGURACIÓN FINAL PARA CELULARES                      */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. OCULTAMOS EL MENÚ DE ARRIBA EN EL CELULAR PARA QUE NO QUEDE FEO */
-    header, nav {
-        display: none !important;
+    /* 1. EL ZÓCALO MARRONCITO SE QUEDA FIJO Y TE SIGUE */
+    header {
+        display: flex !important;
+        position: fixed !important; /* Lo fija arriba de la pantalla */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999 !important; /* Lo pone por encima de todo */
+        background-color: #5d534a !important; /* Tu color marroncito */
+        padding: 10px !important;
     }
 
-    /* 2. PASAMOS LAS FOTOS A 2 COLUMNAS PARA QUE TENGAN ESPACIO */
-    /* Nota: Usamos 'body *' para buscar cualquier contenedor de tus fotos automáticamente */
+    /* Ocultamos el menú de texto viejo dentro del zócalo para que no estorbe */
+    header nav {
+        display: none !important; 
+    }
+
+    /* Le damos un espacio al resto de la página para que el zócalo no tape las cosas al arrancar */
+    body {
+        padding-top: 70px !important; 
+    }
+
+    /* 2. LIBERAMOS LAS CATEGORÍAS Y EL CATÁLOGO (NO TE SIGUEN) */
+    /* Buscamos los contenedores de tus botones blancos para que suban con el dedo */
+    .categorias, 
+    .botones-contenedor, 
+    div[class*="categoria"], 
+    div[class*="menu-opciones"],
+    .ver-catalogo,
+    button,
+    a[class*="btn"],
+    a[class*="catalogo"] {
+        position: static !important; /* Pierden el efecto pegajoso */
+        position: relative !important; /* Se mueven de forma normal con la página */
+    }
+
+    /* 3. MANTENEMOS LAS FOTOS RECTANGULARES EN 2 COLUMNAS */
     body .productos-grid, 
     body .galeria-grid, 
     body .grid, 
     body div[class*="grid"], 
     body div[class*="galeria"] { 
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Fuerza 2 columnas */
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
         padding: 8px !important;
     }
 
-    /* 3. HACEMOS QUE LAS FOTOS SEAN RECTÁNGULOS PERFECTOS Y LINDOS */
     body div img, 
     body .grid img, 
     body .galeria-grid img {
         width: 100% !important;
         height: auto !important;
-        aspect-ratio: 3 / 4 !important; /* Proporción rectangular perfecta de catálogo */
-        object-fit: cover !important;  /* Recorta la imagen prolijamente para que no se estire */
+        aspect-ratio: 3 / 4 !important;
+        object-fit: cover !important;
         border-radius: 8px !important;
     }
 }
