@@ -426,59 +426,66 @@ html {
 }
 
 /* ======================================================== */
-/*  RESTAURACIÓN DEL MENÚ ORIGINAL PARA CELULARES           */
+/*  ARREGLO ULTRA-ESTRICTO: LOGO CUADRADO Y CHIQUITO        */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. SE DEVUELVE EL MENÚ DE BOTONES ORIGINAL (INICIO, MUEBLES, ETC) */
-    header nav, header ul {
-        display: flex !important; /* Fuerza a que vuelvan a aparecer */
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
-        list-style: none !important;
-        padding: 0 !important;
-        margin: 10px 0 0 0 !important;
+    /* 1. FORZAMOS AL ENCABEZADO A PONER EL LOGO Y EL TEXTO EN FILA HORIZONTAL */
+    header, .header, #header, div[class*="header"] {
+        display: flex !important;
+        flex-direction: row !important; /* Pone el logo al lado del texto */
+        flex-wrap: wrap !important;     /* Permite que el menú baje al renglón de abajo */
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 10px !important;
+        background-color: #5d534a !important; /* Tu color marroncito */
+        height: auto !important;
+        position: relative !important;
     }
 
-    /* 2. TODO SE MUEVE NORMAL CON EL DEDO (NADA QUEDA FIJO NI TAPA LAS FOTOS) */
+    /* 2. OBLIGAMOS A CUALQUIER IMAGEN DEL LOGO A SER UN CUADRADITO DE 45PX */
+    header img, .logo img, #logo, [class*="logo"] img, div[class*="logo"] img {
+        width: 45px !important;
+        height: 45px !important;
+        max-width: 45px !important;
+        max-height: 45px !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+        display: inline-block !important;
+    }
+
+    /* 3. EL TEXTO "PIEDRA Y FORJA" UN POCO MÁS GRANDE AL LADO DEL LOGO */
+    header h1, header h2, header p, .logo-text, header span, [class*="titulo"] {
+        font-size: 18px !important; /* Más grande que las letras de inicio */
+        color: #ffffff !important;
+        margin: 0 0 0 12px !important; /* Separación del cuadradito del logo */
+        display: inline-block !important;
+        font-weight: bold !important;
+    }
+
+    /* 4. EL MENÚ DE BOTONES (INICIO, MUEBLES...) ACOMODADO ABAJO */
+    header nav, header ul, .menu, [class*="nav"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important; /* Se estira abajo del todo */
+        gap: 12px !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 12px 0 4px 0 !important;
+    }
+
+    header nav a, header ul a, header li a, [class*="nav"] a {
+        font-size: 13px !important; /* Tamaño normal prolijo */
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+
+    /* 5. TODO SE MUEVE DE FORMA NORMAL CON EL DEDO (NADA TE PERSIGUE) */
     header, nav, .categorias, .botones-contenedor, div[class*="categoria"] {
         position: static !important;
         position: relative !important;
-        height: auto !important;
     }
-
-    header {
-        display: flex !important;
-        flex-direction: column !important; /* Pone el logo arriba y los botones abajo */
-        align-items: center !important;
-        padding: 15px !important;
-        background-color: #5d534a !important; /* Mantiene tu fondo marroncito original */
-    }
-
-    /* Ajuste para que el logo se acomode bien con sus botones */
-    header img {
-        max-width: 150px !important; 
-        height: auto !important;
-    }
-
-    body {
-        padding-top: 0 !important;
-    }
-
-    /* 3. MANTENEMOS LAS FOTOS RECTANGULARES EN 2 COLUMNAS */
-    body .productos-grid, body .galeria-grid, body .grid, body div[class*="grid"] { 
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 8px !important;
-    }
-
-    body div img, body .grid img, body .galeria-grid img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 3 / 4 !important;
-        object-fit: cover !important;
-        border-radius: 8px !important;
-    }
+    body { padding-top: 0 !important; }
 }
