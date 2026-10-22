@@ -426,17 +426,42 @@ html {
 }
 
 /* ======================================================== */
-/*  CONFIGURACIÓN FINAL SIMPLIFICADA (NADA QUEDA FIJO)       */
+/*  ARREGLO DEFINITIVO PARA CELULAR (SIN VUELTAS)           */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. SE QUITA CUALQUIER EFECTO FIJO: TODO SUBE Y BAJA NORMAL CON EL DEDO */
-    header, nav, .categorias, .botones-contenedor, div[class*="categoria"] {
+    /* 1. SE QUITA TODO LO FIJO: TODO SUBE Y BAJA CON EL DEDO */
+    header, nav, .categorias, .botones-contenedor, div[class*="categoria"], .logo, [class*="logo"] {
         position: static !important;
         position: relative !important;
     }
 
-    /* 2. LAS FOTOS SE QUEDAN EN 2 COLUMNAS RECTANGULARES QUE SÍ FUNCIONAN */
+    /* 2. FORZAMOS AL LOGO GIGANTE A ACHICARSE SÍ O SÍ */
+    header img, .logo img, [class*="logo"] img {
+        max-width: 140px !important; /* Le da un tamaño chiquito y normal de celular */
+        width: 140px !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important; /* Lo centra prolijamente */
+    }
+
+    /* Ajustamos el fondo del encabezado para que no ocupe toda la pantalla */
+    header {
+        height: auto !important;
+        padding: 15px 0 !important;
+        background-color: #5d534a !important; /* Mantiene tu color marroncito */
+    }
+
+    /* Ocultamos el menú de letras chiquitas que se amontona abajo del logo */
+    header nav, header ul {
+        display: none !important;
+    }
+
+    body {
+        padding-top: 0 !important;
+    }
+
+    /* 3. MANTENEMOS LAS FOTOS RECTANGULARES EN 2 COLUMNAS */
     body .productos-grid, body .galeria-grid, body .grid, body div[class*="grid"] { 
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
