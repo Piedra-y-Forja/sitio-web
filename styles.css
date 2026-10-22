@@ -426,63 +426,25 @@ html {
 }
 
 /* ======================================================== */
-/*  DISEÑO PERFECTO PARA EL CELULAR                         */
+/*  CONFIGURACIÓN FINAL SIMPLIFICADA (NADA QUEDA FIJO)       */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. FIJAMOS ÚNICAMENTE EL ZÓCALO MARRONCITO CON TU LOGO CHICO */
-    header {
-        display: flex !important;
-        position: fixed !important; /* Lo deja congelado arriba */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 70px !important; /* Le da una altura fija y controlada */
-        z-index: 9999 !important; /* Lo pone por encima de todo */
-        background-color: #5d534a !important; /* Mantiene tu color marroncito */
-        box-sizing: border-box;
-        align-items: center;
-        padding: 0 15px !important;
+    /* 1. SE QUITA CUALQUIER EFECTO FIJO: TODO SUBE Y BAJA NORMAL CON EL DEDO */
+    header, nav, .categorias, .botones-contenedor, div[class*="categoria"] {
+        position: static !important;
+        position: relative !important;
     }
 
-    /* Ocultamos el menú de texto viejo dentro del zócalo para que no rompa el espacio */
-    header nav {
-        display: none !important; 
-    }
-
-    /* Le damos espacio a la página arriba para que el zócalo no tape los botones al cargar */
-    body {
-        padding-top: 90px !important; 
-    }
-
-    /* 2. LIBERAMOS POR COMPLETO LOS BOTONES BLANCOS (SUBEN CON EL DEDO) */
-    .categorias, 
-    .botones-contenedor, 
-    div[class*="categoria"], 
-    div[class*="menu-opciones"],
-    .ver-catalogo,
-    button,
-    a[class*="btn"],
-    a[class*="catalogo"] {
-        position: static !important; /* Pierden cualquier efecto flotante */
-        position: relative !important; /* Se mueven normal con el resto de la página */
-    }
-
-    /* 3. MANTENEMOS LAS FOTOS RECTANGULARES EN 2 COLUMNAS */
-    body .productos-grid, 
-    body .galeria-grid, 
-    body .grid, 
-    body div[class*="grid"], 
-    body div[class*="galeria"] { 
+    /* 2. LAS FOTOS SE QUEDAN EN 2 COLUMNAS RECTANGULARES QUE SÍ FUNCIONAN */
+    body .productos-grid, body .galeria-grid, body .grid, body div[class*="grid"] { 
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
         padding: 8px !important;
     }
 
-    body div img, 
-    body .grid img, 
-    body .galeria-grid img {
+    body div img, body .grid img, body .galeria-grid img {
         width: 100% !important;
         height: auto !important;
         aspect-ratio: 3 / 4 !important;
