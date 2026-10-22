@@ -478,7 +478,7 @@ html {
 
     header nav a, header ul a, header li a, [class*="nav"] a {
         font-size: 13px !important; /* Tamaño normal prolijo */
-        color: #ffffff !important;
+        color: #000 !important;
         text-decoration: none !important;
     }
 
