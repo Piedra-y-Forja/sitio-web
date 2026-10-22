@@ -426,77 +426,80 @@ html {
 }
 
 /* ======================================================== */
-/*  CONFIGURACIÓN FINAL COMPLETA: LOGO Y FOTOS PERFECTAS     */
+/*  CONFIGURACIÓN FINAL COMPLETAMENTE CORREGIDA             */
 /* ======================================================== */
 @media (max-width: 768px) {
     
-    /* 1. EL LOGO SE QUEDA CHIQUITO Y AL LADO DEL TEXTO */
-    header, .header, #header, div[class*="header"] {
+    /* 1. EL LOGO EN FILA HORIZONTAL PERFECTO */
+    header {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         align-items: center !important;
         justify-content: flex-start !important;
         padding: 10px !important;
-        background-color: #5d534a !important; /* Tu marroncito */
+        background-color: #5d534a !important;
         height: auto !important;
         position: relative !important;
     }
 
-    header img, .logo img, #logo, [class*="logo"] img {
+    header img {
         width: 45px !important;
         height: 45px !important;
         object-fit: contain !important;
-        margin: 0 !important;
     }
 
-    header h1, header h2, .logo-text, [class*="titulo"] {
+    header h1 {
         font-size: 18px !important;
         color: #ffffff !important;
         margin: 0 0 0 12px !important;
         font-weight: bold !important;
     }
 
-    /* 2. EL MENÚ DE BOTONES ORIGINAL EN COLOR OSCURO (PARA QUE SE VEA) */
-    header nav, header ul, .menu, [class*="nav"] {
+    /* 2. EL MENÚ DE BOTONES (INICIO, CATÁLOGO...) VISIBLE Y CON FONDO GRIS */
+    header nav, header ul {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
         width: 100% !important;
-        gap: 12px !important;
+        gap: 8px !important;
         list-style: none !important;
         padding: 0 !important;
         margin: 12px 0 4px 0 !important;
     }
 
-    header nav a, header ul a, [class*="nav"] a {
-        font-size: 13px !important;
-        color: #5d534a !important; /* Color marrón oscuro para que se lea sobre fondo blanco */
+    /* Modificamos los botones para que tengan texto blanco y un fondo gris lindo */
+    header nav a, header ul a, header li a {
+        font-size: 12px !important;
+        color: #ffffff !important; /* TEXTO BLANCO PARA QUE RESALTE */
+        background-color: rgba(255, 255, 255, 0.15) !important; /* Fondo grisáceo suave */
+        padding: 6px 10px !important;
+        border-radius: 4px !important;
         text-decoration: none !important;
         font-weight: bold !important;
     }
 
     /* 3. TODO SE MUEVE NORMAL CON EL DEDO */
-    header, nav, .categorias, .botones-contenedor, div[class*="categoria"] {
+    header, nav, .categorias {
         position: static !important;
         position: relative !important;
     }
-    body { padding-top: 0 !important; }
 
-    /* 4. SE RESTAURAN LAS 2 COLUMNAS RECTANGULARES LINDAS PARA LAS FOTOS */
-    body div[class*="grid"], body div[class*="galeria"], .productos-grid, .galeria-grid, .grid { 
+    /* 4. LAS IMÁGENES QUEDAN EXACTAMENTE IGUAL (NO SE TOCAN) */
+    .productos-grid { 
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Fuerza las 2 columnas */
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
-        padding: 8px !important;
+        padding: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    /* Esto hace que las fotos de vestidores vuelvan a ser rectángulos prolijos */
-    body div img, body .grid img, body .galeria-grid img, body div[class*="grid"] img {
+    .productos-grid > div, .productos-grid .card, .productos-grid img {
         width: 100% !important;
         height: auto !important;
-        aspect-ratio: 3 / 4 !important; /* Rectángulo alto de catálogo */
+        aspect-ratio: 3 / 4 !important;
         object-fit: cover !important;
         border-radius: 8px !important;
     }
