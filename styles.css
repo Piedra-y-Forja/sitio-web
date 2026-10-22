@@ -469,7 +469,7 @@ html {
         margin: 12px 0 4px 0 !important;
     }
 
-    /* 3. ARREGLO FINAL DE LAS LETRAS: MARRÓN OSCURO PARA LAS CATEGORÍAS */
+    /* 3. ARREGLO FINAL DE LAS LETRAS:  */
     /* Apuntamos con nombre y apellido a tu menú desplegable de la foto */
     .dropdown-content, .dropdown-content div {
         background-color: #ffffff !important; /* Fondo blanco para las categorías */
