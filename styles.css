@@ -426,29 +426,27 @@ html {
 }
 
 /* ========================================================== */
-/* * CONFIGURACIÓN ESTRUCTURAL DEFINITIVA PARA CELULARES * */
+/*   * CONFIGURACIÓN ESTRUCTURAL CORREGIDA PARA CELULARES *   */
 /* ========================================================== */
 @media (max-width: 768px) {
 
-    /* 1. BARRA SUPERIOR FIJA: LOGO + NOMBRE (Como tu segunda foto) */
+    /* 1. BARRA SUPERIOR FIJA: LOGO + NOMBRE (Color marrón exacto del logo) */
     header {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        background-color: #5d534a !important; /* Tu color marroncito */
+        background-color: #645d55 !important; /* Tu color marrón del logo */
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: flex-start !important; /* Alinea logo y texto a la izquierda */
+        justify-content: flex-start !important;
         gap: 15px !important;
         padding: 10px 15px !important;
-        z-index: 9999 !important;
+        z-index: 10000 !important; /* Capa más alta de todas */
         box-sizing: border-box !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
     }
 
-    /* Forzamos a que aparezca tu logo */
     header img {
         width: 45px !important;
         height: 45px !important;
@@ -456,7 +454,6 @@ html {
         display: block !important;
     }
 
-    /* Forzamos a que aparezca "Piedra y Forja" al lado del logo */
     header h1 {
         display: block !important;
         color: #FFFFFF !important;
@@ -470,54 +467,96 @@ html {
     /* 2. BARRA DE BOTONES PRINCIPALES (Justo debajo de la marca) */
     header nav, .nav-menu {
         position: fixed !important;
-        top: 65px !important; /* Se ubica exactamente abajo del header */
+        top: 65px !important; 
         left: 0 !important;
         width: 100% !important;
-        background-color: #5d534a !important; /* Mismo tono marroncito */
+        background-color: #645d55 !important; /* Mismo color marrón del logo */
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: nowrap !important; /* Todo en una sola línea */
-        justify-content: space-evenly !important; /* Distribuye Inicio, Catálogo, Mármoles... */
+        flex-wrap: nowrap !important;
+        justify-content: space-evenly !important;
         align-items: center !important;
         padding: 10px 0 !important;
         margin: 0 !important;
         list-style: none !important;
-        z-index: 9998 !important;
-        overflow-x: auto !important; /* Si la pantalla es muy chica, permite deslizar los botones de costado */
+        z-index: 9999 !important; /* Segunda capa más alta */
+        overflow-x: auto !important;
         box-sizing: border-box !important;
     }
 
-    /* Espacio de compensación en el cuerpo de la página para que el menú fijo no tape las fotos */
+    /* Espacio de compensación para que el contenido empiece abajo de las dos barras fijas */
     body {
         padding-top: 120px !important; 
     }
 
-    /* 3. OCULTAR CATEGORÍAS DEL CATÁLOGO (Cocinas, Vestidores, Camas, Escritorios) */
-    /* De esta forma el menú queda limpio solo con los botones que me pediste */
-    .dropdown-content, 
-    .dropdown-content div,
-    .dropdown-content a,
-    .nav-menu ul {
-        display: none !important; 
+    /* 3. SUBMENÚ DESPLEGABLE DE CATÁLOGO (Caja organizada que aparece al interactuar) */
+    .dropdown-container {
+        position: relative !important;
     }
 
-    /* 4. ESTILO DE LOS BOTONES VISIBLES (Limpio, sin líneas blancas raras) */
+    /* Activación del despliegue en celular (por hover o click si tiene JS) */
+    .dropdown-container:hover .dropdown-content,
+    .dropdown-container:focus-within .dropdown-content {
+        display: grid !important; /* Cambiado a Grid para ordenar en cuadritos perfectos */
+    }
+
+    .dropdown-content {
+        display: none; /* Oculto por defecto */
+        position: absolute !important;
+        top: 35px !important; /* Cae justo debajo del botón Catálogo */
+        left: 50% !important;
+        transform: translateX(-50%) !important; /* Lo centra en la pantalla */
+        background-color: #645d55 !important; /* Fondo del mismo marrón */
+        grid-template-columns: repeat(2, 1fr) !important; /* Organiza en 2 columnas internas limpias */
+        gap: 8px !important;
+        padding: 12px !important;
+        border-radius: 8px !important;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.3) !important; /* Sombra sutil oscura, no blanca */
+        z-index: 10001 !important; /* Por encima de las barras de navegación */
+        width: 220px !important; /* Ancho cómodo para el recuadro */
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Aseguramos que los contenedores div internos no rompan el flujo */
+    .dropdown-content div {
+        display: contents !important;
+    }
+
+    /* 4. ESTILO GENERAL DE LOS ENLACES (Blancos, limpios y sin encimarse) */
     .nav-menu a, 
     .dropdown-trigger, 
-    header nav a {
-        color: #FFFFFF !important;       /* Letras blancas legibles */
-        font-size: 13px !important;      /* Tamaño equilibrado */
+    header nav a,
+    .dropdown-content a {
+        color: #FFFFFF !important;
+        font-size: 13px !important;
         font-weight: bold !important;
-        text-decoration: none !important; /* Cero subrayados */
-        border: none !important;         /* Cero líneas o recuadros blancos */
+        text-decoration: none !important;
+        border: none !important;
         outline: none !important;
         padding: 6px 10px !important;
-        white-space: nowrap !important;  /* Evita que se rompan las palabras */
+        white-space: nowrap !important;
         display: inline-block !important;
         background: transparent !important;
     }
 
-    /* 5. SECCIÓN DE IMÁGENES DE ABAJO (Mantener intactas tus 2 columnas) */
+    /* Estilo exclusivo para los links dentro del recuadro desplegable */
+    .dropdown-content a {
+        background-color: rgba(255, 255, 255, 0.08) !important; /* Fondo sutil para simular botones */
+        border-radius: 4px !important;
+        text-align: center !important;
+        padding: 8px !important;
+        font-size: 12px !important;
+    }
+
+    /* 5. SECCIÓN DE CONTENIDO E IMÁGENES (Bajan y pasan estrictamente POR DEBAJO del menú) */
+    .productos-grid, 
+    main, 
+    section, 
+    div:not(header, nav, .nav-menu, .dropdown-content) {
+        position: relative;
+        z-index: 1 !important; /* Capa baja para que el menú fijo los tape correctamente al scrollear */
+    }
+
     .productos-grid {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
