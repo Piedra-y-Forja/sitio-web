@@ -425,16 +425,16 @@ html {
     border-radius: 4px;
 }
 
-/* ======================================================== */
-/*  CONFIGURACIÓN FINAL GARANTIZADA PARA CELULARES          */
-/* ======================================================== */
+/* ========================================================== */
+/*   * 1. CONFIGURACIÓN FINAL GARANTIZADA PARA CELULARES *    */
+/* ========================================================== */
 @media (max-width: 768px) {
     
-    /* 1. MANTENEMOS EL LOGO EN FILA HORIZONTAL PERFECTO */
+    /* Mantenemos el logo en fila horizontal perfecto */
     header {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: wrap !important;
+        flex-wrap: nowrap !important;
         align-items: center !important;
         justify-content: flex-start !important;
         padding: 10px !important;
@@ -450,56 +450,64 @@ html {
     }
 
     header h1 {
-        font-size: 18px !important;
-        color: #ffffff !important;
-        margin: 0 0 0 12px !important;
-        font-weight: bold !important;
+        display: none !important; /* Oculta el h1 si solo usas el logo en celu */
     }
 
-    /* 2. ACOMODAMOS EL MENÚ DE NAVEGACIÓN PRINCIPAL */
+    /* 2. ACOMODAMOS EL MENÚ DE NAVEGACIÓN PRINCIPAL EN UNA SOLA LÍNEA */
     header nav, .nav-menu {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: wrap !important;
+        flex-wrap: nowrap !important;   /* Prohibido saltar de línea */
         justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;           /* Espaciado horizontal ajustado */
         width: 100% !important;
-        gap: 10px !important;
         list-style: none !important;
         padding: 0 !important;
-        margin: 12px 0 4px 0 !important;
+        margin: 0 0 0 10px !important;
+        overflow-x: auto !important;    /* Permite deslizar de lado si la pantalla es muy chica */
     }
 
-    /* 3. ARREGLO FINAL DE LAS LETRAS:  */
-    /* Apuntamos con nombre y apellido a tu menú desplegable de la foto */
-    .dropdown-content, .dropdown-content div {
-        background-color: #ffffff !important; /* Fondo blanco para las categorías */
+    /* 3. ELIMINACIÓN DEL CUADRADO BLANCO Y CAMBIO A FILA HORIZONTAL */
+    .dropdown-content, 
+    .dropdown-content div {
         display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        position: static !important;
+        flex-direction: row !important; /* Todo en la misma línea */
+        position: static !important;    /* Quita el comportamiento flotante */
+        background-color: transparent !important; /* Chau recuadro blanco */
+        background: transparent !important;
+        box-shadow: none !important;    /* Elimina sombras */
+        padding: 0 !important;
+        margin: 0 !important;
+        width: auto !important;
     }
 
-    /* Forzamos a que las letras 'Cocinas', 'Vestidores', etc., sean marrón oscuro y legibles */
-    .dropdown-content a, .dropdown-trigger, .nav-menu a {
-        color: #ffff !important; /* COLOR MARRÓN OSCURO PARA QUE SE VEA */
-        font-size: 14px !important;
-        padding: 8px 12px !important;
+    /* Forzamos a que las letras de todo el menú sean blancas y legibles */
+    .dropdown-content a, 
+    .dropdown-trigger, 
+    .nav-menu a {
+        color: #FFFFFF !important;       /* Letras blancas */
+        font-size: 13px !important;      /* Tamaño sutil para que entre todo */
+        padding: 6px 8px !important;     /* Margen interno para cliquear cómodo */
         text-decoration: none !important;
         font-weight: bold !important;
-        display: block !important;
+        display: inline-block !important;
+        white-space: nowrap !important;  /* Evita que las palabras se rompan en dos líneas */
     }
 
     /* 4. LAS IMÁGENES NO SE TOCAN (SE QUEDAN EN 2 COLUMNAS PERFECTAS) */
-    .productos-grid { 
+    .productos-grid {
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(2, 1r) !important;
         gap: 12px !important;
         padding: 10px !important;
         width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    .productos-grid > div, .productos-grid .card, .productos-grid img {
+    .productos-grid > div, 
+    .productos-grid .card, 
+    .productos-grid img {
         width: 100% !important;
         height: auto !important;
         aspect-ratio: 3 / 4 !important;
