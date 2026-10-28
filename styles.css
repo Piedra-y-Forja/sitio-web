@@ -227,7 +227,7 @@ html {
 /* --- Galerías de Imágenes --- */
 .category-block {
     margin-bottom: 50px;
-    scroll-margin-top: 90px; /* Ajuste para que al hacer clic no tape el título la barra superior */
+    scroll-margin-top: 130px; /* 👈 Aumentamos este valor para darle más aire en celulares */
 }
 
 .category-block h3 {
