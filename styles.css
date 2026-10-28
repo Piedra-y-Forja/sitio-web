@@ -430,20 +430,18 @@ html {
 /* ========================================================== */
 @media (max-width: 768px) {
 
-    /* 1. BARRA SUPERIOR FIJA: LOGO + NOMBRE (Color marrón exacto del logo) */
+    /* 1. CABECERA CON MARCA: SE QUEDA ARRIBA (No acompaña el scroll) */
     header {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
+        position: relative !important; /* Cambiado a relative para que se quede fija arriba y desaparezca al bajar */
         width: 100% !important;
-        background-color: #645d55 !important; /* Tu color marrón del logo */
+        background-color: #645d55 !important; /* Color marrón exacto de tu logo */
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
         gap: 15px !important;
         padding: 10px 15px !important;
-        z-index: 10000 !important; /* Capa más alta de todas */
+        z-index: 10000 !important;
         box-sizing: border-box !important;
     }
 
@@ -464,65 +462,67 @@ html {
         white-space: nowrap !important;
     }
 
-    /* 2. BARRA DE BOTONES PRINCIPALES (Justo debajo de la marca) */
+    /* 2. BARRA DE NAVEGACIÓN PRINCIPAL: ESTA SÍ TE ACOMPAÑA EN EL SCROLL */
     header nav, .nav-menu {
-        position: fixed !important;
-        top: 65px !important; 
+        position: sticky !important; /* Se congela en el techo en cuanto llega arriba */
+        top: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        background-color: #645d55 !important; /* Mismo color marrón del logo */
+        background-color: #645d55 !important; /* Color marrón exacto de tu logo */
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-evenly !important;
         align-items: center !important;
-        padding: 10px 0 !important;
+        padding: 12px 0 !important;
         margin: 0 !important;
         list-style: none !important;
-        z-index: 9999 !important; /* Segunda capa más alta */
+        z-index: 9999 !important; /* Capa superior para contener los elementos */
         overflow-x: auto !important;
         box-sizing: border-box !important;
     }
 
-    /* Espacio de compensación para que el contenido empiece abajo de las dos barras fijas */
+    /* Reseteamos el padding del body ya que el header principal no ocupa espacio flotante */
     body {
-        padding-top: 120px !important; 
+        padding-top: 0 !important; 
     }
 
-    /* 3. SUBMENÚ DESPLEGABLE DE CATÁLOGO (Caja organizada que aparece al interactuar) */
+    /* 3. DESPLEGABLE DEL CATÁLOGO: CAJA QUE CAE LIMPIA SIN TAPAR CONTENIDO */
     .dropdown-container {
         position: relative !important;
     }
 
-    /* Activación del despliegue en celular (por hover o click si tiene JS) */
+    /* Cuando interactúas con Catálogo, muestra las opciones */
     .dropdown-container:hover .dropdown-content,
     .dropdown-container:focus-within .dropdown-content {
-        display: grid !important; /* Cambiado a Grid para ordenar en cuadritos perfectos */
+        display: flex !important;
     }
 
     .dropdown-content {
         display: none; /* Oculto por defecto */
         position: absolute !important;
-        top: 35px !important; /* Cae justo debajo del botón Catálogo */
+        top: 100% !important; /* Cae exactamente abajo de la palabra Catálogo */
         left: 50% !important;
-        transform: translateX(-50%) !important; /* Lo centra en la pantalla */
-        background-color: #645d55 !important; /* Fondo del mismo marrón */
-        grid-template-columns: repeat(2, 1fr) !important; /* Organiza en 2 columnas internas limpias */
-        gap: 8px !important;
-        padding: 12px !important;
-        border-radius: 8px !important;
-        box-shadow: 0px 8px 16px rgba(0,0,0,0.3) !important; /* Sombra sutil oscura, no blanca */
-        z-index: 10001 !important; /* Por encima de las barras de navegación */
-        width: 220px !important; /* Ancho cómodo para el recuadro */
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        transform: translateX(-50%) !important; /* Centrado perfecto respecto al botón */
+        background-color: #645d55 !important; /* Fondo marrón del logo */
+        flex-direction: column !important; /* Opciones una debajo de la otra de forma limpia */
+        gap: 2px !important;
+        padding: 8px 0 !important;
+        min-width: 160px !important; /* Ancho contenedor estándar para celular */
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.3) !important; /* Sombra oscura limpia */
+        z-index: 10001 !important; /* Por encima de cualquier foto o texto de la página */
+        border-radius: 4px !important;
     }
 
-    /* Aseguramos que los contenedores div internos no rompan el flujo */
+    /* Forzamos a que los divs internos del menú colapsen y no rompan la estructura */
     .dropdown-content div {
-        display: contents !important;
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
-    /* 4. ESTILO GENERAL DE LOS ENLACES (Blancos, limpios y sin encimarse) */
+    /* 4. ESTILO DE LOS BOTONES Y ENLACES (Limpio, blanco y sin bordes raros) */
     .nav-menu a, 
     .dropdown-trigger, 
     header nav a,
@@ -533,46 +533,33 @@ html {
         text-decoration: none !important;
         border: none !important;
         outline: none !important;
-        padding: 6px 10px !important;
         white-space: nowrap !important;
-        display: inline-block !important;
+        display: block !important;
         background: transparent !important;
     }
 
-    /* Estilo exclusivo para los links dentro del recuadro desplegable */
+    /* Estilo horizontal para la botonera principal */
+    .nav-menu a, .dropdown-trigger, header nav a {
+        padding: 6px 10px !important;
+    }
+
+    /* Estilo de lista vertical para las categorías del catálogo */
     .dropdown-content a {
-        background-color: rgba(255, 255, 255, 0.08) !important; /* Fondo sutil para simular botones */
-        border-radius: 4px !important;
-        text-align: center !important;
-        padding: 8px !important;
-        font-size: 12px !important;
-    }
-
-    /* 5. SECCIÓN DE CONTENIDO E IMÁGENES (Bajan y pasan estrictamente POR DEBAJO del menú) */
-    .productos-grid, 
-    main, 
-    section, 
-    div:not(header, nav, .nav-menu, .dropdown-content) {
-        position: relative;
-        z-index: 1 !important; /* Capa baja para que el menú fijo los tape correctamente al scrollear */
-    }
-
-    .productos-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 15px 10px !important;
+        padding: 10px 15px !important;
+        text-align: left !important; /* Alineado al formato lista clásico */
+        font-size: 13px !important;
         width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    .productos-grid > div, 
-    .productos-grid .card, 
-    .productos-grid img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 3 / 4 !important;
-        object-fit: cover !important;
-        border-radius: 8px !important;
+    /* Efecto sutil al pasar el dedo por una opción del catálogo */
+    .dropdown-content a:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 5. SECCIÓN DE CONTENIDO (Pasa estrictamente por debajo de la botonera fija) */
+    main, section, .productos-grid {
+        position: relative !important;
+        z-index: 1 !important;
     }
 }
