@@ -425,126 +425,53 @@ html {
     border-radius: 4px;
 }
 
-/* ========================================================== */
-/*   * CONFIGURACIÓN ESTRUCTURAL CORREGIDA PARA CELULARES *   */
-/* ========================================================== */
+/* --- Ajustes para Dispositivos Móviles (Responsive) --- */
 @media (max-width: 768px) {
-
-    /* 1. CABECERA CON MARCA: SE QUEDA ARRIBA (Desaparece al bajar) */
-    header {
-        position: relative !important; /* Cambiado para que NO baje con el scroll */
-        width: 100% !important;
-        background-color: #645d55 !important; /* El color exacto de tu logo */
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        gap: 15px !important;
-        padding: 10px 15px !important;
-        z-index: 10 !important;
-        box-sizing: border-box !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    .navbar {
+        height: auto; /* Permite que se adapte si el contenido se apila */
     }
 
-    header img {
-        width: 45px !important;
-        height: 45px !important;
-        object-fit: contain !important;
-        display: block !important;
+    .nav-container { 
+        flex-direction: column; 
+        gap: 12px; 
+        padding: 10px;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
     }
 
-    header h1 {
-        display: block !important;
-        color: #FFFFFF !important;
-        font-size: 20px !important;
-        font-weight: bold !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        white-space: nowrap !important;
+    .nav-menu a { 
+        margin: 5px 10px; 
+        font-size: 0.85rem; 
     }
-
-    /* 2. BARRA DE BOTONES PRINCIPALES: TAMBIÉN SE QUEDA ARRIBA (Desaparece al bajar) */
-    header nav, .nav-menu {
-        position: relative !important; /* Cambiado para que NO persiga ni tape nada */
-        top: auto !important;
-        left: auto !important;
-        width: 100% !important;
-        background-color: #645d55 !important; /* El color exacto de tu logo */
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: space-evenly !important;
-        align-items: center !important;
-        padding: 10px 0 !important;
-        margin: 0 !important;
-        list-style: none !important;
-        z-index: 9 !important;
-        overflow-x: auto !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Quitamos el espacio gigante que empujaba las fotos hacia abajo */
-    body {
-        padding-top: 0 !important; 
-    }
-
-    /* Ocultamos el submenú viejo para que no haga ruido */
+    
     .dropdown-content {
-        display: none !important;
+        position: static; /* Evita que flote desalineado en móviles */
+        box-shadow: none;
+        background-color: rgba(252, 249, 242, 0.1); /* Sutil fondo integrado */
+        padding-left: 10px;
+        left: 0;
     }
 
-    /* Estilo de las letras del menú principal */
-    .nav-menu a, .dropdown-trigger, header nav a {
-        color: #FFFFFF !important;
-        font-size: 13px !important;
-        font-weight: bold !important;
-        text-decoration: none !important;
-        border: none !important;
-        outline: none !important;
-        padding: 6px 10px !important;
-        white-space: nowrap !important;
-        display: inline-block !important;
-        background: transparent !important;
+    .dropdown-content a {
+        color: var(--cream-brand) !important; /* Texto claro para contrastar con el fondo topo */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* 3. LA BANDEJA DE CATEGORÍAS (Cocinas, Vestidores...) AHORA SE QUEDA PEGADA ARRIBA */
-    /* Buscamos el contenedor de esos botones redondeados blancos */
-    .categorias-container, 
-    main > div:has(.dropdown-content),
-    section:has(a[href*="cocina"]) {
-        position: sticky !important; /* Se clava en el techo de la pantalla al scrollear */
-        top: 0 !important;
-        background-color: #FFFFFF !important; /* Fondo blanco para que no se transparente con las fotos */
-        padding: 10px 0 !important; /* Reduce el espacio exagerado de arriba y abajo */
-        margin-top: 5px !important;  /* Sube la bandeja más cerca del texto explicativo */
-        margin-bottom: 15px !important;
-        z-index: 9999 !important; /* Prioridad máxima absoluta sobre las fotos */
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.1) !important; /* Sombra sutil al quedar flotando */
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
+    /* Ajustes de tipografía para pantallas chicas */
+    .hero-content h1 {
+        font-size: 2.2rem;
     }
 
-    /* 4. SECCIÓN DE IMÁGENES (Pasan limpias por detrás de la bandeja pegada) */
-    .productos-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 10px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        position: relative !important;
-        z-index: 1 !important; /* Capa baja */
+    .hero-content p {
+        font-size: 1rem;
     }
 
-    .productos-grid > div, 
-    .productos-grid .card, 
-    .productos-grid img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 3 / 4 !important;
-        object-fit: cover !important;
-        border-radius: 8px !important;
+    .filter-bar {
+        position: static; /* Desactiva el sticky en móviles para mejorar la lectura */
+        width: 95%;
     }
 }
