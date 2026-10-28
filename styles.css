@@ -425,43 +425,63 @@ html {
     border-radius: 4px;
 }
 
-/* --- Ajustes para Dispositivos Móviles (Responsive) --- */
+/* --- Ajustes para Dispositivos Móviles (Responsive Corregido) --- */
 @media (max-width: 768px) {
     .navbar {
-        height: auto; /* Permite que se adapte si el contenido se apila */
+        height: auto; 
     }
 
     .nav-container { 
         flex-direction: column; 
         gap: 12px; 
-        padding: 10px;
+        padding: 12px 20px;
+        position: relative; /* Base para el posicionamiento del menú flotante */
     }
     
     .nav-menu {
-        flex-wrap: wrap;
+        display: flex;
         justify-content: center;
+        align-items: center;
         width: 100%;
+        gap: 15px; /* Controla la separación fija entre los enlaces principales */
     }
 
     .nav-menu a { 
-        margin: 5px 10px; 
-        font-size: 0.85rem; 
+        margin: 0; /* Limpiamos márgenes viejos para usar el gap limpio */
+        font-size: 0.9rem; 
     }
     
+    /* El contenedor del dropdown mantiene su lugar relativo */
+    .dropdown {
+        position: relative;
+    }
+
+    /* ¡La solución! El rectángulo ahora flota y NO deforma el zócalo */
     .dropdown-content {
-        position: static; /* Evita que flote desalineado en móviles */
-        box-shadow: none;
-        background-color: rgba(252, 249, 242, 0.1); /* Sutil fondo integrado */
-        padding-left: 10px;
-        left: 0;
+        position: absolute; 
+        top: 100%; /* Se abre exactamente debajo del texto "Catálogo" */
+        left: 50%;
+        transform: translateX(-50%); /* Lo centra perfectamente respecto a su botón */
+        background-color: var(--cream-brand); /* Volvemos al color crema original */
+        min-width: 180px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        border-radius: 6px;
+        padding: 8px 0;
+        z-index: 1020; /* Asegura que quede por encima de todo */
     }
 
     .dropdown-content a {
-        color: var(--cream-brand) !important; /* Texto claro para contrastar con el fondo topo */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-dark) !important; /* Texto oscuro legible sobre el fondo crema */
+        padding: 12px 16px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
     }
 
-    /* Ajustes de tipografía para pantallas chicas */
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    /* Ajustes extras de optimización */
     .hero-content h1 {
         font-size: 2.2rem;
     }
@@ -471,7 +491,7 @@ html {
     }
 
     .filter-bar {
-        position: static; /* Desactiva el sticky en móviles para mejorar la lectura */
+        position: static; 
         width: 95%;
     }
 }
