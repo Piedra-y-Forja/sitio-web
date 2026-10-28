@@ -473,7 +473,7 @@ html {
         top: 65px !important; /* Se ubica exactamente abajo del header */
         left: 0 !important;
         width: 100% !important;
-        background-color: #5d534a !important; /* Mismo tono marroncito */
+        background-color:  #5d534a !important; /* Mismo tono marroncito */
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important; /* Todo en una sola línea */
