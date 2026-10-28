@@ -426,25 +426,29 @@ html {
 }
 
 /* ========================================================== */
-/*   * CONFIGURACIÓN ESTRUCTURAL CORREGIDA PARA CELULARES *   */
+/* * CONFIGURACIÓN ESTRUCTURAL DEFINITIVA PARA CELULARES * */
 /* ========================================================== */
 @media (max-width: 768px) {
 
-    /* 1. CABECERA CON MARCA: SE QUEDA ARRIBA (No acompaña el scroll) */
+    /* 1. BARRA SUPERIOR FIJA: LOGO + NOMBRE (Como tu segunda foto) */
     header {
-        position: relative !important; /* Cambiado a relative para que se quede fija arriba y desaparezca al bajar */
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
         width: 100% !important;
-        background-color: #645d55 !important; /* Color marrón exacto de tu logo */
+        background-color: #5d534a !important; /* Tu color marroncito */
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: flex-start !important;
+        justify-content: flex-start !important; /* Alinea logo y texto a la izquierda */
         gap: 15px !important;
         padding: 10px 15px !important;
-        z-index: 10000 !important;
+        z-index: 9999 !important;
         box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
     }
 
+    /* Forzamos a que aparezca tu logo */
     header img {
         width: 45px !important;
         height: 45px !important;
@@ -452,6 +456,7 @@ html {
         display: block !important;
     }
 
+    /* Forzamos a que aparezca "Piedra y Forja" al lado del logo */
     header h1 {
         display: block !important;
         color: #FFFFFF !important;
@@ -462,104 +467,73 @@ html {
         white-space: nowrap !important;
     }
 
-    /* 2. BARRA DE NAVEGACIÓN PRINCIPAL: ESTA SÍ TE ACOMPAÑA EN EL SCROLL */
+    /* 2. BARRA DE BOTONES PRINCIPALES (Justo debajo de la marca) */
     header nav, .nav-menu {
-        position: sticky !important; /* Se congela en el techo en cuanto llega arriba */
-        top: 0 !important;
+        position: fixed !important;
+        top: 65px !important; /* Se ubica exactamente abajo del header */
         left: 0 !important;
         width: 100% !important;
-        background-color: #645d55 !important; /* Color marrón exacto de tu logo */
+        background-color: #5d534a !important; /* Mismo tono marroncito */
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: space-evenly !important;
+        flex-wrap: nowrap !important; /* Todo en una sola línea */
+        justify-content: space-evenly !important; /* Distribuye Inicio, Catálogo, Mármoles... */
         align-items: center !important;
-        padding: 12px 0 !important;
+        padding: 10px 0 !important;
         margin: 0 !important;
         list-style: none !important;
-        z-index: 9999 !important; /* Capa superior para contener los elementos */
-        overflow-x: auto !important;
+        z-index: 9998 !important;
+        overflow-x: auto !important; /* Si la pantalla es muy chica, permite deslizar los botones de costado */
         box-sizing: border-box !important;
     }
 
-    /* Reseteamos el padding del body ya que el header principal no ocupa espacio flotante */
+    /* Espacio de compensación en el cuerpo de la página para que el menú fijo no tape las fotos */
     body {
-        padding-top: 0 !important; 
+        padding-top: 120px !important; 
     }
 
-    /* 3. DESPLEGABLE DEL CATÁLOGO: CAJA QUE CAE LIMPIA SIN TAPAR CONTENIDO */
-    .dropdown-container {
-        position: relative !important;
+    /* 3. OCULTAR CATEGORÍAS DEL CATÁLOGO (Cocinas, Vestidores, Camas, Escritorios) */
+    /* De esta forma el menú queda limpio solo con los botones que me pediste */
+    .dropdown-content, 
+    .dropdown-content div,
+    .dropdown-content a,
+    .nav-menu ul {
+        display: none !important; 
     }
 
-    /* Cuando interactúas con Catálogo, muestra las opciones */
-    .dropdown-container:hover .dropdown-content,
-    .dropdown-container:focus-within .dropdown-content {
-        display: flex !important;
-    }
-
-    .dropdown-content {
-        display: none; /* Oculto por defecto */
-        position: absolute !important;
-        top: 100% !important; /* Cae exactamente abajo de la palabra Catálogo */
-        left: 50% !important;
-        transform: translateX(-50%) !important; /* Centrado perfecto respecto al botón */
-        background-color: #645d55 !important; /* Fondo marrón del logo */
-        flex-direction: column !important; /* Opciones una debajo de la otra de forma limpia */
-        gap: 2px !important;
-        padding: 8px 0 !important;
-        min-width: 160px !important; /* Ancho contenedor estándar para celular */
-        box-shadow: 0px 8px 16px rgba(0,0,0,0.3) !important; /* Sombra oscura limpia */
-        z-index: 10001 !important; /* Por encima de cualquier foto o texto de la página */
-        border-radius: 4px !important;
-    }
-
-    /* Forzamos a que los divs internos del menú colapsen y no rompan la estructura */
-    .dropdown-content div {
-        display: block !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 4. ESTILO DE LOS BOTONES Y ENLACES (Limpio, blanco y sin bordes raros) */
+    /* 4. ESTILO DE LOS BOTONES VISIBLES (Limpio, sin líneas blancas raras) */
     .nav-menu a, 
     .dropdown-trigger, 
-    header nav a,
-    .dropdown-content a {
-        color: #FFFFFF !important;
-        font-size: 13px !important;
+    header nav a {
+        color: #FFFFFF !important;       /* Letras blancas legibles */
+        font-size: 13px !important;      /* Tamaño equilibrado */
         font-weight: bold !important;
-        text-decoration: none !important;
-        border: none !important;
+        text-decoration: none !important; /* Cero subrayados */
+        border: none !important;         /* Cero líneas o recuadros blancos */
         outline: none !important;
-        white-space: nowrap !important;
-        display: block !important;
+        padding: 6px 10px !important;
+        white-space: nowrap !important;  /* Evita que se rompan las palabras */
+        display: inline-block !important;
         background: transparent !important;
     }
 
-    /* Estilo horizontal para la botonera principal */
-    .nav-menu a, .dropdown-trigger, header nav a {
-        padding: 6px 10px !important;
-    }
-
-    /* Estilo de lista vertical para las categorías del catálogo */
-    .dropdown-content a {
-        padding: 10px 15px !important;
-        text-align: left !important; /* Alineado al formato lista clásico */
-        font-size: 13px !important;
+    /* 5. SECCIÓN DE IMÁGENES DE ABAJO (Mantener intactas tus 2 columnas) */
+    .productos-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 15px 10px !important;
         width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    /* Efecto sutil al pasar el dedo por una opción del catálogo */
-    .dropdown-content a:hover {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-    }
-
-    /* 5. SECCIÓN DE CONTENIDO (Pasa estrictamente por debajo de la botonera fija) */
-    main, section, .productos-grid {
-        position: relative !important;
-        z-index: 1 !important;
+    .productos-grid > div, 
+    .productos-grid .card, 
+    .productos-grid img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4 !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
     }
 }
