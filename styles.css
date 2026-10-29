@@ -449,18 +449,20 @@ html {
         position: relative; /* Base para el posicionamiento del menú flotante */
     }
     
-    .nav-menu {
+        .nav-menu {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-        gap: 15px; /* Controla la separación fija entre los enlaces principales */
+        gap: 8px; /* 👈 Achicamos la separación de 15px a 8px en celulares */
+        flex-wrap: wrap; /* 👈 ¡La clave! Si no entra, permite que los enlaces bajen ordenados en lugar de cortarse */
     }
 
     .nav-menu a { 
-        margin: 0; /* Limpiamos márgenes viejos para usar el gap limpio */
-        font-size: 0.9rem; 
+        margin: 0; 
+        font-size: 0.8rem; /* 👈 Bajamos un pelito el tamaño (de 0.9rem a 0.8rem) solo para celulares */
     }
+
     
     /* El contenedor del dropdown mantiene su lugar relativo */
     .dropdown {
