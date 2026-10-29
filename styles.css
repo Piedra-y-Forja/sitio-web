@@ -117,9 +117,22 @@ html {
     opacity: 1;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+/* --- Control del Catálogo flotante --- */
+
+/* 💻 Computadoras: El menú SE ABRE al pasar el mouse por encima */
+@media (hover: hover) and (pointer: fine) {
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
 }
+
+/* 📱 Celulares y Tablets: Desactivamos el efecto pegajoso del dedo */
+@media (max-width: 768px) {
+    .dropdown:hover .dropdown-content {
+        display: none !important;
+    }
+}
+
 
 /* --- Botonera de Filtros Rápidos (Sección Muebles) --- */
 .filter-bar {

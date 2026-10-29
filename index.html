@@ -242,7 +242,7 @@
         </div>
 <!-- Script de Navegación Nativo -->
     <script>
-                document.addEventListener('DOMContentLoaded', function() {
+             document.addEventListener('DOMContentLoaded', function() {
             var items = document.querySelectorAll('.gallery-item a');
             var currentIndex = 0;
 
@@ -261,9 +261,9 @@
             lightbox.style.alignItems = 'center';
             lightbox.innerHTML = `
                 <span id='lightbox-close' style='position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;user-select:none;'>&times;</span>
-                <span id='lightbox-prev' style='position:absolute;left:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>❮</span>
+                <span id='lightbox-prev' style='position:absolute;left:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>&#10094;</span>
                 <img id='lightbox-img' src='' style='max-width:85%;max-height:85%;box-shadow:0 0 20px rgba(0,0,0,0.5);border-radius:4px;'>
-                <span id='lightbox-next' style='position:absolute;right:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>❯</span>
+                <span id='lightbox-next' style='position:absolute;right:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>&#10095;</span>
             `;
             document.body.appendChild(lightbox);
 
@@ -299,20 +299,6 @@
             
             lightbox.addEventListener('click', function(e) {
                 if(e.target === lightbox) lightbox.style.display = 'none';
-            });
-
-            // 👇 SOLUCIÓN PARA EL MENÚ CATÁLOGO EN MÓVILES (Agregada de forma segura) 👇
-            var enlacesNavbar = document.querySelectorAll('.navbar .dropdown-content a');
-            enlacesNavbar.forEach(function(enlace) {
-                enlace.addEventListener('click', function() {
-                    var dropdown = enlace.closest('.dropdown-content');
-                    if (dropdown) {
-                        dropdown.style.display = 'none'; // Esconde el rectángulo al tocar la opción
-                        setTimeout(function() {
-                            dropdown.style.display = ''; // Lo resetea para que vuelva a funcionar al subir
-                        }, 400);
-                    }
-                });
             });
         });
     </script>
