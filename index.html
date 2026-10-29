@@ -242,11 +242,11 @@
         </div>
 <!-- Script de Navegación Nativo -->
     <script>
-             document.addEventListener('DOMContentLoaded', function() {
+                    document.addEventListener('DOMContentLoaded', function() {
             var items = document.querySelectorAll('.gallery-item a');
             var currentIndex = 0;
 
-            // Crear el visor flotante dinámicamente
+            // --- Tu código original de Lightbox (Intacto) ---
             var lightbox = document.createElement('div');
             lightbox.id = 'custom-lightbox';
             lightbox.style.position = 'fixed';
@@ -261,9 +261,9 @@
             lightbox.style.alignItems = 'center';
             lightbox.innerHTML = `
                 <span id='lightbox-close' style='position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;user-select:none;'>&times;</span>
-                <span id='lightbox-prev' style='position:absolute;left:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>&#10094;</span>
+                <span id='lightbox-prev' style='position:absolute;left:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>❮</span>
                 <img id='lightbox-img' src='' style='max-width:85%;max-height:85%;box-shadow:0 0 20px rgba(0,0,0,0.5);border-radius:4px;'>
-                <span id='lightbox-next' style='position:absolute;right:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>&#10095;</span>
+                <span id='lightbox-next' style='position:absolute;right:30px;color:white;font-size:50px;cursor:pointer;user-select:none;'>❯</span>
             `;
             document.body.appendChild(lightbox);
 
@@ -300,6 +300,39 @@
             lightbox.addEventListener('click', function(e) {
                 if(e.target === lightbox) lightbox.style.display = 'none';
             });
+
+
+            // --- 🚀 LA SOLUCIÓN EXCLUSIVA PARA TU MENÚ EN CELULARES ---
+            var trigger = document.querySelector('.navbar .dropdown-trigger');
+            var menuDesplegable = document.querySelector('.navbar .dropdown-content');
+            var opcionesMenu = document.querySelectorAll('.navbar .dropdown-content a');
+
+            if (trigger && menuDesplegable) {
+                // 1. Al tocar la palabra "Catálogo", el rectángulo se abre o se cierra
+                trigger.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault(); // Evita que recargue la página
+                        menuDesplegable.classList.toggle('show-mobile');
+                    }
+                });
+
+                // 2. Al tocar una opción (Vestidores, Cocinas, etc.), se cierra al instante
+                opcionesMenu.forEach(function(opcion) {
+                    opcion.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            menuDesplegable.classList.remove('show-mobile');
+                        }
+                    });
+                });
+
+                // 3. Si tocan cualquier otra parte de la pantalla, también se cierra
+                document.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768 && !trigger.contains(e.target) && !menuDesplegable.contains(e.target)) {
+                        menuDesplegable.classList.remove('show-mobile');
+                    }
+                });
+            }
         });
+
     </script>
 </html>

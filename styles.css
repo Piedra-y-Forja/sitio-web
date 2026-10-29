@@ -117,20 +117,18 @@ html {
     opacity: 1;
 }
 
-/* --- Control del Catálogo flotante --- */
+/* --- Sistema de Catálogo unificado --- */
 
-/* 💻 Computadoras: El menú SE ABRE al pasar el mouse por encima */
+/* 💻 Computadoras: Se despliega pasando el mouse por arriba */
 @media (hover: hover) and (pointer: fine) {
     .dropdown:hover .dropdown-content {
         display: block;
     }
 }
 
-/* 📱 Celulares y Tablets: Desactivamos el efecto pegajoso del dedo */
-@media (max-width: 768px) {
-    .dropdown:hover .dropdown-content {
-        display: none !important;
-    }
+/* 📱 Celulares y Tablets: Controlado de forma segura por JavaScript mediante clics */
+.dropdown-content.show-mobile {
+    display: block !important;
 }
 
 
